@@ -1,5 +1,5 @@
 {
-  "name": "@floating-ui/dom",
+  "name": "@wy-floating-ui/dom",
   "version": "1.6.12",
   "description": "Floating UI for the web",
   "publishConfig": {

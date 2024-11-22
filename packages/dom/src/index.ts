@@ -1,6 +1,6 @@
-import {computePosition as computePositionCore} from '@floating-ui/core';
+import { computePosition as computePositionCore } from '@floating-ui/core';
 
-import {platform} from './platform';
+import { platform } from './platform';
 import type {
   ComputePositionConfig,
   FloatingElement,
@@ -20,15 +20,15 @@ export const computePosition = (
   // multiple lifecycle resets re-use the same result. It only lives for a
   // single call. If other functions become expensive, we can add them as well.
   const cache = new Map<ReferenceElement, Array<Element>>();
-  const mergedOptions = {platform, ...options};
-  const platformWithCache = {...mergedOptions.platform, _c: cache};
+  const mergedOptions = { platform, ...options };
+  const platformWithCache = { ...mergedOptions.platform, _c: cache };
   return computePositionCore(reference, floating, {
     ...mergedOptions,
     platform: platformWithCache,
   });
 };
 
-export {autoUpdate} from './autoUpdate';
+export { autoUpdate } from './autoUpdate';
 export {
   arrow,
   autoPlacement,
@@ -41,7 +41,8 @@ export {
   shift,
   size,
 } from './middleware';
-export {platform} from './platform';
+export { platform } from './platform';
+export * from './observerSizeLocation'
 export type {
   ArrowOptions,
   AutoPlacementOptions,
@@ -90,4 +91,4 @@ export type {
 } from '@floating-ui/core';
 // This export exists only for backwards compatibility. It will be removed in
 // the next major version.
-export {getOverflowAncestors} from '@floating-ui/utils/dom';
+export { getOverflowAncestors } from '@floating-ui/utils/dom';

@@ -11,7 +11,7 @@ import {
   isTableElement,
   isTopLayer,
 } from '@floating-ui/utils/dom';
-import {isStaticPositioned} from '../utils/isStaticPositioned';
+import { isStaticPositioned } from '../utils/isStaticPositioned';
 
 type Polyfill = (element: HTMLElement) => Element | null;
 
@@ -45,6 +45,8 @@ function getTrueOffsetParent(
 
 // Gets the closest ancestor positioned element. Handles some edge cases,
 // such as table ancestors and cross browser bugs.
+// 获取最近的祖先定位元素。处理一些边缘情况，
+// 例如表格祖先和跨浏览器错误。
 export function getOffsetParent(
   element: Element,
   polyfill?: Polyfill,

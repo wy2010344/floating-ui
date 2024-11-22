@@ -1,9 +1,9 @@
-import {floor, max, min} from '@floating-ui/utils';
-import {getDocumentElement, getOverflowAncestors} from '@floating-ui/utils/dom';
+import { floor, max, min } from '@floating-ui/utils';
+import { getDocumentElement, getOverflowAncestors } from '@floating-ui/utils/dom';
 
-import type {FloatingElement, ReferenceElement} from './types';
-import {getBoundingClientRect} from './utils/getBoundingClientRect';
-import {unwrapElement} from './utils/unwrapElement';
+import type { FloatingElement, ReferenceElement } from './types';
+import { getBoundingClientRect } from './utils/getBoundingClientRect';
+import { unwrapElement } from './utils/unwrapElement';
 
 export interface AutoUpdateOptions {
   /**
@@ -38,7 +38,7 @@ export interface AutoUpdateOptions {
 }
 
 // https://samthor.au/2021/observing-dom/
-function observeMove(element: Element, onMove: () => void) {
+export function observeMove(element: Element, onMove: () => void) {
   let io: IntersectionObserver | null = null;
   let timeoutId: NodeJS.Timeout;
 
@@ -53,7 +53,7 @@ function observeMove(element: Element, onMove: () => void) {
   function refresh(skip = false, threshold = 1) {
     cleanup();
 
-    const {left, top, width, height} = element.getBoundingClientRect();
+    const { left, top, width, height } = element.getBoundingClientRect();
 
     if (!skip) {
       onMove();
@@ -145,14 +145,14 @@ export function autoUpdate(
   const ancestors =
     ancestorScroll || ancestorResize
       ? [
-          ...(referenceEl ? getOverflowAncestors(referenceEl) : []),
-          ...getOverflowAncestors(floating),
-        ]
+        ...(referenceEl ? getOverflowAncestors(referenceEl) : []),
+        ...getOverflowAncestors(floating),
+      ]
       : [];
 
   ancestors.forEach((ancestor) => {
     ancestorScroll &&
-      ancestor.addEventListener('scroll', update, {passive: true});
+      ancestor.addEventListener('scroll', update, { passive: true });
     ancestorResize && ancestor.addEventListener('resize', update);
   });
 
